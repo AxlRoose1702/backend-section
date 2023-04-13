@@ -14,6 +14,10 @@ const {homeController, HomeController} = require("../controllers");
 const { homeRoutes } = require('../routes/index.routes');
 const routes = require('../routes');
 
+//se importan los modelos
+const { User, Idea, Comments } = require('../models/');
+
+
 
 //Se crea el contenedor
 const container = createContainer();
@@ -32,6 +36,10 @@ container.register({
 }).register({
     //se registran las rutas
     homeRoutes: asFunction(homeRoutes).singleton()
+}).register({
+    User: asValue(User),
+    Idea: asValue(Idea),
+    Comment: asValue(Comment),
 });
 
 module.exports = container;
