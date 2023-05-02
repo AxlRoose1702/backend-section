@@ -5,7 +5,7 @@ const config = require("../config");
 const app = require('.');
 
 //Se importan los servicios
-const {HomeService} = require("../services");
+const {HomeService, UserService, IdeaService, CommentService } = require("../services");
 
 //se importan los controllers
 const {homeController, HomeController} = require("../controllers");
@@ -30,7 +30,10 @@ container.register({
     config: asValue(config)
 }).register({
     //se registran los servicios
-    HomeService: asClass(HomeService).singleton()
+    HomeService: asClass(HomeService).singleton(),
+    UserService: asClass(UserService).singleton(),
+    IdeaService: asClass(IdeaService).singleton(),
+    CommentService: asClass(CommentService).singleton()
 }).register({
     //se registran los controllers
     homeController: asClass(HomeController.bind(HomeController)).singleton()
