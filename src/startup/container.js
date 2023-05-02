@@ -15,7 +15,7 @@ const { homeRoutes } = require('../routes/index.routes');
 const routes = require('../routes');
 
 //se importan los modelos
-const { User, Idea, Comments } = require('../models/');
+const { User, Idea, Comment } = require('../models/');
 
 //se impo|rtan los repositorios
 const { UserRepository, IdeaRepository, CommentRepository } = require('../repositories');
@@ -33,7 +33,7 @@ container.register({
     HomeService: asClass(HomeService).singleton()
 }).register({
     //se registran los controllers
-    homeController: asClass(homeController.bind(HomeController)).singleton()
+    homeController: asClass(HomeController.bind(HomeController)).singleton()
 }).register({
     //se registran las rutas
     homeRoutes: asFunction(homeRoutes).singleton()

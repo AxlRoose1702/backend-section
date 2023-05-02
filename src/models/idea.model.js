@@ -1,5 +1,5 @@
-const mogoose = require('mongoose');
-const { Schema } = mogoose;
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 const { compareSync, hashSync, genSaltSync} = require('bcryptjs');
 
 const IdeaSchema = new Schema({

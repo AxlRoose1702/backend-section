@@ -2,12 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
-const homeRoutes = require('./home.routes');
-const notFoundMiddleware = require('../middlewares/not-found.middleware');
-const errorMiddleware = require('../middlewares/error.middleware');
+const homeRoutes = require('../routes/home.routes');
+const NotfoundMiddleware = require('../middlewares/not-found.middleware');
+const ErrorMiddleware = require('../middlewares/error.middleware');
 require('express-async-errors');
 
-module.exports = function({homerouters}){
+module.exports = function({homeRoutes}){
     const router = express.Router();
     const apiRoutes = express.Router();
     const { NotfoundMiddleware, ErrorMiddleware } = require('../middlewares');
