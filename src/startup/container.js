@@ -8,10 +8,10 @@ const app = require('.');
 const {HomeService, UserService, IdeaService, CommentService } = require("../services");
 
 //se importan los controllers
-const {homeController, HomeController, UserController, IdeaController, CommentController} = require("../controllers");
+const {HomeController, UserController, IdeaController, CommentController} = require("../controllers");
 
 //se importan las rutas
-const { homeRoutes } = require('../routes/index.routes');
+const { HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes } = require('../routes/index.routes');
 const routes = require('../routes');
 
 //se importan los modelos
@@ -43,7 +43,11 @@ container.register({
 
 }).register({
     //se registran las rutas
-    homeRoutes: asFunction(homeRoutes).singleton()
+    homeRoutes: asFunction(HomeRoutes).singleton(),
+    userRoutes: asFunction(UserRoutes).singleton(),
+    ideaRoutes: asFunction(IdeaRoutes).singleton(),
+    commentRoutes: asFunction(CommentRoutes).singleton()
+
 }).register({
     User: asValue(User),
     Idea: asValue(Idea),

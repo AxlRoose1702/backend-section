@@ -3,10 +3,10 @@ let _commentRepository = null,
 _ideaRepository = null;
 
 class CommentService extends BaseService{
-    constructor({CommentService, Idearepository}){
-        super(CommentService);
-        _commentRepository = CommentService;
-        _ideaRepository = Idearepository;
+    constructor({CommentRepository, IdeaRepository}){
+        super(CommentRepository);
+        _commentRepository = CommentRepository;
+        _ideaRepository = IdeaRepository;
     }
 
     async getIdeaComments(ideaId){
