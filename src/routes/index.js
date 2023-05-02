@@ -1,13 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+//const {HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes} = require('../routes/index')
 const compression = require('compression');
-const homeRoutes = require('../routes/home.routes');
-const NotfoundMiddleware = require('../middlewares/not-found.middleware');
-const ErrorMiddleware = require('../middlewares/error.middleware');
 require('express-async-errors');
 
-module.exports = function({homeRoutes}){
+module.exports = function({
+    homeRoutes, 
+    userRoutes, 
+    ideaRoutes, 
+    commentRoutes
+})
+    {
     const router = express.Router();
     const apiRoutes = express.Router();
     const { NotfoundMiddleware, ErrorMiddleware } = require('../middlewares');
@@ -19,6 +23,9 @@ module.exports = function({homeRoutes}){
     .use(compression())
 
     apiRoutes.use("/home", homeRoutes);
+    apiRoutes.use("/user", userRoutes);
+    apiRoutes.use("/idea", ideaRoutes);
+    apiRoutes.use("/comment", commentRoutes);
 
     router.use('/v1/api', apiRoutes);
 
