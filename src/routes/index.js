@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
-//const {HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes} = require('../routes/index')
 const compression = require('compression');
 require('express-async-errors');
 
@@ -9,7 +8,8 @@ module.exports = function({
     homeRoutes, 
     userRoutes, 
     ideaRoutes, 
-    commentRoutes
+    commentRoutes,
+    authRoutes
 })
     {
     const router = express.Router();
@@ -26,6 +26,7 @@ module.exports = function({
     apiRoutes.use("/user", userRoutes);
     apiRoutes.use("/idea", ideaRoutes);
     apiRoutes.use("/comment", commentRoutes);
+    apiRoutes.use("/auth", authRoutes);
 
     router.use('/v1/api', apiRoutes);
 
