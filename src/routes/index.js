@@ -3,6 +3,9 @@ const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
 require('express-async-errors');
+const swaggerUI = require('swagger-ui-express');
+const {SWAGGER_PATH} = require('../config');
+const swaggerDocument = require(SWAGGER_PATH);
 
 module.exports = function({
     homeRoutes, 
@@ -29,6 +32,7 @@ module.exports = function({
     apiRoutes.use("/auth", authRoutes);
 
     router.use('/v1/api', apiRoutes);
+    router.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
     //se agrega los middleware para mostrar paginas de errores
     router.use(NotfoundMiddleware);
